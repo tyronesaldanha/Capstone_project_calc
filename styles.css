@@ -35,10 +35,24 @@ button{
     width:50%;
 }
 
+button:active{
+    background-color: darkgrey;
+    color:tomato;
+    font-weight: bold;
+}
+
 input{
     border:0;
     width:100%;
-    font-size:200px;
+    font-size:20vh;
     text-align:right;
     outline:none;
+    background-color:transparent;
+    color:white;
 }
+
+#result{
+    font-size:10vh;
+    color:white;
+}
+
