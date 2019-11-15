@@ -39,6 +39,7 @@ button:active{
     background-color: darkgrey;
     color:tomato;
     font-weight: bold;
+    transition: background 0s;
 }
 
 input{
