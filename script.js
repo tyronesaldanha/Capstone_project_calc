@@ -55,5 +55,11 @@ function eval_expr()
             result.innerHTML = "";
         }
     }
+    if(input.value.length*80 > window.screen.width){
+        input.style.fontSize = "10vh"; 
+    }
+    else{
+        input.style.fontSize = "20vh"; 
+    }
     input.focus();
 }
