@@ -10,11 +10,15 @@ function keyPress(event)
     //Do nothing as field empty and any operators or element other than button is touched
     if(['/','X','+'].includes(btnPress)&&input.value==="" || event.target.tagName!='BUTTON'||"AC"===btnPress)
     {
-        input.value="";
-        result.innerHTML="";
+        if(btnPress==="AC")
+        {
+            input.value="";
+            result.innerHTML="";
+        }
+        return;
     }
 
-    if(btnPress != 'C' && btnPress != '=' && btnPress != 'AC')
+    if(btnPress != 'C' && btnPress != '='&&btnPress!="AC")
     {
         if(operators.includes(btnPress) && operators.includes(input.value[input.value.length - 1]))
         {//Changes operator to another if no number after
@@ -28,8 +32,16 @@ function keyPress(event)
     }
     else if(btnPress==="C")
     {//backspacing input
-        input.value=input.value.substring(0,input.value.length - 1);
-        eval_expr();
+        if(input.value.length>1)
+        {
+            input.value=input.value.substring(0,input.value.length - 1);
+            eval_expr();
+        }
+        else
+        {
+            input.value="";
+            result.innerHTML="";
+        }
     }
     else if(btnPress==='=')
     {
