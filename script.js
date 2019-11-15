@@ -11,7 +11,7 @@ function keyPress(event)
     if(['/','X','+'].includes(btnPress)&&input.value==="" || event.target.tagName!='BUTTON'||"AC"===btnPress)
     {
         if(btnPress==="AC")
-        {
+        {//clear everything
             input.value="";
             result.innerHTML="";
         }
@@ -23,6 +23,7 @@ function keyPress(event)
         if(operators.includes(btnPress) && operators.includes(input.value[input.value.length - 1]))
         {//Changes operator to another if no number after
             input.value = input.value.substring(0, input.value.length - 1) + btnPress;
+            
         }
         else
         {
@@ -54,7 +55,16 @@ function eval_expr()
 {
     try
     {//regular expression used as eval has issue with X as multiply 
-        result.innerHTML = eval(input.value.replace(/X/g,'*'));
+        if(input.value.match(/[0-9]*%/g))
+        {
+            result.innerHTML = eval(input.value.replace(/%/g,'/100'));
+            input.value="";
+        }
+        else
+        {
+            result.innerHTML = eval(input.value.replace(/X/g,'*'));   
+        }
+     
         if(result.innerHTML==input.value)
         {//blanks out result field if u type a number and press =
             result.innerHTML="";
